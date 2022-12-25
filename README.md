@@ -1,59 +1,48 @@
-# SPICED Week09: Bayer04 jersey recognition on live footage using a 'Convolutional_Neural_Networks' (Keras)
+# SPICED Week07: Short-term temperature forecast and creating an interactive Folium map
 
 ## Project Summary
 
-Have you ever wondered which year the Bayer04 vintage jersey in your wardrobe is from? Maybe I can help.
+This project had two independent parts.
 
-As part of this project, I took between 150 and 200 photos of five different Bayer04 photos and used them to train a 'Convolutional_Neural_Networks' (CNN) using the library 'Keras'. As you can see on the following demonstration video, the programme was subsequently able to classify all six jerseys without errors.
+### Part 1: Create a short-term temperature forecast:
 
-In addition, I trained the pretrained CNN VGG-16 on the two most similar jerseys to test its performance. The user can choose in the script between using the independently trained model or VGG-16.
+- Get and clean temperature data from www.ecad.eu (see file '1_decompose_timeseries.ipynb')
+- Build a baseline model modelling trend and seasonality (see file '1_decompose_timeseries.ipynb')
+- Plot and inspect the different components of a time series (see file '1_decompose_timeseries.ipynb')
+- Model time dependence of the remainder using an AR model (see file '2_create_full_model.ipynb' and '3_evaluate.ipynb')
+- Compare the statistical output of different AR models (see file '4_ARIMA.ipynb')
 
-IMPORTANT: The two models and the photos of the six jerseys in the folder './1_data/' were not uploaded to GitHub because they were too large. So this is only a skeleton that you can use to train and apply your own model.
+### Part 2: Create an interactive Folium map
 
-## Demonstration Video
+- The map displays the average temperature change between 1970 and 2022 for each federal state in Germany (see file 'map.ipynb')
 
-https://user-images.githubusercontent.com/61935581/209471946-48e37de4-191b-490c-98cf-f49383481eaa.mp4
+## Documentation
 
-## Installation
+### Part 1: Create a short-term temperature forecast:
 
-Clone the repository and create a new virtual environment
+Plot the 'trend line'
 
-```bash
-python3 -m venv envname # to create the virtual env
-source envname/bin/activate # activate it
-```
+![Bildschirmfoto 2022-12-25 um 20 45 32](https://user-images.githubusercontent.com/61935581/209480379-7410fbe0-0443-416f-9651-977dff2aec26.png)
 
-Afterwards install the libraries specified in requirements.txt
+Plot the 'trend line and seasonality'
 
-```bash
-pip install -r requirements.txt
-```
+![Bildschirmfoto 2022-12-25 um 20 46 42](https://user-images.githubusercontent.com/61935581/209480406-75dc0b1b-25ee-4f1a-ac50-f88a3c7f62e4.png)
 
-## Usage
+Plot the 'remainder'
 
-The project contains three major components:
+![Bildschirmfoto 2022-12-25 um 20 46 09](https://user-images.githubusercontent.com/61935581/209480434-cfdd3ba0-dae5-4acd-ac0e-f4bf8f31f02a.png)
 
-### 1. Take pictures of your objects
+Plot the trained model
 
-To take pictures of the objects that the CNN should later distinguish, please use the ['imageclassifier' repo](https://github.com/bonartm/imageclassifier) by user 'bonartm', which is already in the order './take_pictures/'. The repo has its own README.md which explains exactly how to use it.
+![Bildschirmfoto 2022-12-25 um 20 47 44](https://user-images.githubusercontent.com/61935581/209480442-022c2a7f-9754-4f30-8806-1be64d56d25f.png)
 
-As mentioned above, I took between 150 and 200 photos of the five different jerseys and the blank wall. I rotated the jerseys to get shots from all perspectives.
+### Part 2: Create an interactive Folium map
 
-### 2. Train the CNN model on the pictures
-
-With the jupyter notebook '2_Image_Recognition.ipynb' you can train the CNN model on your pictures. At the end of the notebook you will find a confusion matrix that gives you an impression of how well the model is performing on the test data.
-
-If you also want to train the pretrained VGG-16 model on your photos, you can use the jupyter notebook '3_Transfer_Pretrained_Model.ipynb' to do so.
-
-### 3. Use the model on live footage
-
-Use the script 'image_recognition.py' to perform image recognition on live footage. As it stands, the script asks which model to use for categorisation - the fully self-trained CNN model (option 1) or VGG-16 (option 2).
+https://user-images.githubusercontent.com/61935581/209480492-481e6a9e-ce9a-4cda-afc6-8a8241b0aba1.mp4
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
-
+Pull requests are welcome. For major changes, please open an issue firstto discuss what you would like to change.
 Please make sure to update tests as appropriate.
 
 ## License
